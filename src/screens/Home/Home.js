@@ -5,18 +5,24 @@ import {
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
-import { initialCurrentLocation } from '../../assets/data';
+import { initialCurrentLocation, categoryData } from '../../assets/data';
 import { Header } from '../../components';
 import { COLORS, icons } from '../../constants';
+import { MainCategories, RestaurantList } from './components';
 
 
 const Home = () => {
 
-    const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation)
+    const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
+    const [categories, setCategories] = useState(categoryData);
+    const [selectedCategory, setSelectedCategory] = useState(categories[0])
+
+    const onSelectCategory = (category) => {
+        setSelectedCategory(category)
+    }
 
     return (
         <SafeAreaView style={styles.container}>
-            <Text>Home</Text>
             <Header
                 title={currentLocation.streetName}
                 clickHandlerLeft={() => navigation.navigate("Map")}
@@ -24,7 +30,13 @@ const Home = () => {
                 iconLeft={icons.nearby}
                 iconRight={icons.basket}
             />
-            </SafeAreaView>
+            <MainCategories
+                categories={categories}
+                selectedCategory={selectedCategory}
+                onSelectCategory={onSelectCategory}
+            />
+            <RestaurantList />
+        </SafeAreaView>
         );
     };
 
