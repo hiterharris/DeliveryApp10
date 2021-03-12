@@ -1,13 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import {
-  StyleSheet,
-  SafeAreaView,
-} from 'react-native';
+import { SafeAreaView } from 'react-native';
 import { initialCurrentLocation, categoryData } from '../../assets/data';
 import { Header } from '../../components';
-import { COLORS, icons } from '../../constants';
+import { icons } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import { MainCategories, RestaurantList } from './components';
+import { styles } from './HomeStyles';
 
 const Home = ({ navigation }) => {
 
@@ -51,11 +49,5 @@ const Home = ({ navigation }) => {
         );
     };
 
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.lightGray4,
-    },
-})
 
 export default Home;
