@@ -1,21 +1,19 @@
 import React, { useEffect, useState } from 'react';
 import {
-  View,
-  Text,
   StyleSheet,
   SafeAreaView,
 } from 'react-native';
 import { initialCurrentLocation, categoryData } from '../../assets/data';
 import { Header } from '../../components';
 import { COLORS, icons } from '../../constants';
-import { useRestaurantData } from '../../hooks/useRestaurantData';
+import { fetchData } from '../../helpers/fetchData';
 import { MainCategories, RestaurantList } from './components';
 
 const Home = ({ navigation }) => {
 
-    const restaurantData = useRestaurantData();
+    const restaurantData = fetchData('restaurants');
     const [categories, setCategories] = useState(categoryData);
-    const [selectedCategory, setSelectedCategory] = useState(null)
+    const [selectedCategory, setSelectedCategory] = useState()
     const [restaurants, setRestaurants] = useState()
     const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
 
@@ -25,9 +23,7 @@ const Home = ({ navigation }) => {
 
     const onSelectCategory = (category) => {
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
-
         setRestaurants(restaurantList)
-
         setSelectedCategory(category)
     }
 
