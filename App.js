@@ -1,7 +1,7 @@
 import React from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer } from '@react-navigation/native';
-import { Home, Login } from './src/screens';
+import { Home, Login, Restaurant } from './src/screens';
 
 const Stack = createStackNavigator();
 
@@ -11,6 +11,7 @@ const App = () => {
       <Stack.Navigator screenOptions={{ headerShown: false }} initialRoute={'Home'}>
         <Stack.Screen name='Home' component={Home}/>
         <Stack.Screen name='Login' component={Login}/>
+        <Stack.Screen name='Restaurant' component={Restaurant}/>
       </Stack.Navigator>
     </NavigationContainer>
 

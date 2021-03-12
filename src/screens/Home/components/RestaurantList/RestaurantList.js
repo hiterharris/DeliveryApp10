@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, TouchableOpacity, Image, FlatList } from 'react-native';
 import { icons, SIZES, COLORS, FONTS } from '../../../../constants';
+import { images } from '../../../../constants';
 
 const RestaurantList = (props) => {
     const { currentLocation, restaurants, categories, navigation } = props;
@@ -10,7 +11,6 @@ const RestaurantList = (props) => {
 
         if (category.length > 0)
             return category[0].name
-
         return ""
     }
 
@@ -29,7 +29,7 @@ const RestaurantList = (props) => {
                 }}
             >
                 <Image
-                    source={item.photo}
+                    source={images.burger_restaurant_1}
                     resizeMode="cover"
                     style={{
                         width: "100%",
@@ -72,7 +72,8 @@ const RestaurantList = (props) => {
                         height: 20,
                         width: 20,
                         tintColor: COLORS.primary,
-                        marginRight: 10
+                        marginRight: 10,
+                        marginTop: -2,
                     }}
                 />
                 <Text>{item.rating}</Text>
