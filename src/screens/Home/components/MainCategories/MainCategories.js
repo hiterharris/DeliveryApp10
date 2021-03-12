@@ -4,7 +4,6 @@ import { SIZES, COLORS, FONTS } from '../../../../constants';
 
 const MainCategories = (props) => {
     const { categories, selectedCategory, onSelectCategory } = props;
-    
     // TO DO: abstract renderItem
     const renderItem = ({ item }) => {
         return (

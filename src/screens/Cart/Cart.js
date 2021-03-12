@@ -1,13 +1,27 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SIZES, COLORS, icons } from '../../constants';
 import { Header } from '../../components';
+import { useSelector } from 'react-redux';
 
 const Cart = ({ navigation }) => {
+    const data = useSelector(state => state.cartReducer.cart)
+    const [cartItems, setCartItems] = useState()
+
+    useEffect(() => {
+        setCartItems(data);
+    }, [data]);
 
     return (
         <SafeAreaView style={styles.container}>
             <Header title={'Cart'} clickHandlerLeft={() => navigation.goBack()} iconLeft={icons.back} />
+            {cartItems?.map((item, index) => {
+                return (
+                    <View key={index}>
+                        <Text>{item.name}</Text>
+                    </View>
+                )
+            })}
             <View   
                 style={{
                     flex: 1,
