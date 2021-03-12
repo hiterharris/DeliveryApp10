@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -8,16 +8,20 @@ import {
 import { initialCurrentLocation, categoryData } from '../../assets/data';
 import { Header } from '../../components';
 import { COLORS, icons } from '../../constants';
-import { MainCategories, RestaurantList } from './components';
 import { useRestaurantData } from '../../hooks/useRestaurantData';
+import { MainCategories, RestaurantList } from './components';
 
 const Home = ({ navigation }) => {
 
     const restaurantData = useRestaurantData();
-    const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
     const [categories, setCategories] = useState(categoryData);
     const [selectedCategory, setSelectedCategory] = useState(null)
-    const [restaurants, setRestaurants] = React.useState(restaurantData)
+    const [restaurants, setRestaurants] = useState()
+    const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
+
+    useEffect(() => {
+        setRestaurants(restaurantData)
+    }, [restaurantData])
 
     const onSelectCategory = (category) => {
         let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
@@ -54,6 +58,7 @@ const Home = ({ navigation }) => {
 const styles = StyleSheet.create({
     container: {
         flex: 1,
+        backgroundColor: COLORS.lightGray4,
     },
 })
 
