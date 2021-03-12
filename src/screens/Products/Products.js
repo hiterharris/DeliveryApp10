@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
@@ -6,8 +6,18 @@ import {
 } from 'react-native';
 import { Header } from '../../components';
 import { COLORS, icons } from '../../constants';
+import { useDispatch } from 'react-redux';
+import { cartActions } from '../../state';
 
-const Restaurant = ({ route, navigation }) => {
+const Products = ({ route, navigation }) => {
+    const [cart, setCart] = useState([]);
+    const dispatch = useDispatch();
+
+    useEffect(() => {
+        dispatch(cartActions.addItem(cart))
+    }, [cart])
+
+    // onPress={() => setCart([...cart, item])}s
 
     const { item, currentLocation } = route.params;
 
@@ -20,7 +30,6 @@ const Restaurant = ({ route, navigation }) => {
                 iconLeft={icons.back}
                 iconRight={icons.basket}
             />
-            <Text>{item.name}</Text>
         </SafeAreaView>
         );
     };
@@ -32,4 +41,4 @@ const styles = StyleSheet.create({
     },
 })
 
-export default Restaurant;
+export default Products;

@@ -4,28 +4,28 @@ import { initialCurrentLocation, productsCategories } from '../../assets/data';
 import { Header } from '../../components';
 import { icons } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
-import { MainCategories, RestaurantList } from './components';
+import { MainCategories, ProductsList } from './components';
 import { styles } from './HomeStyles';
 
 const Home = ({ navigation }) => {
 
-    const restaurantData = fetchData('products');
+    const productsData = fetchData('products');
     const [categories, setCategories] = useState(productsCategories);
     const [selectedCategory, setSelectedCategory] = useState(null)
-    const [restaurants, setRestaurants] = useState()
+    const [products, setProducts] = useState()
     const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
 
     useEffect(() => {
-        setRestaurants(restaurantData)
-    }, [restaurantData])
+        setProducts(productsData)
+    }, [productsData])
 
     const onSelectCategory = (category) => {
         if (category.id == 1) {
-            setRestaurants(restaurantData)
+            setProducts(productsData)
             setSelectedCategory(category)
         } else {
-            let restaurantList = restaurantData.filter(a => a.category.includes(category.id))
-            setRestaurants(restaurantList)
+            let productsList = productsData.filter(a => a.category.includes(category.id))
+            setProducts(productsList)
             setSelectedCategory(category)
         }
     }
@@ -44,9 +44,9 @@ const Home = ({ navigation }) => {
                 selectedCategory={selectedCategory}
                 onSelectCategory={onSelectCategory}
             />
-            <RestaurantList
+            <ProductsList
                 currentLocation={currentLocation}
-                restaurants={restaurants}
+                products={products}
                 categories={categories}
                 navigation={navigation}
             />

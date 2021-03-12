@@ -1,5 +1,5 @@
 import MainCategories from './MainCategories/MainCategories';
-import RestaurantList from './RestaurantList/RestaurantList';
+import ProductsList from './ProductsList/ProductsList';
 
 
-export { MainCategories, RestaurantList }
+export { MainCategories, ProductsList }

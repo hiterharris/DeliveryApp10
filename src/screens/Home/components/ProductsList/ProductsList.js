@@ -2,17 +2,9 @@ import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { icons, SIZES, COLORS, FONTS } from '../../../../constants';
 import { styles } from './RestaurantListStyles';
-import { useDispatch } from 'react-redux';
-import { addItem } from '../../../../state/cart/actions';
 
-const RestaurantList = (props) => {
-    const { currentLocation, restaurants, categories, navigation } = props;
-    const [cart, setCart] = useState([]);
-    const dispatch = useDispatch();
-
-    useEffect(() => {
-        dispatch(addItem(cart))
-    }, [cart])
+const ProductsList = (props) => {
+    const { currentLocation, products, categories, navigation } = props;
 
     function getCategoryNameById(id) {
         let category = categories.filter(a => a.id == id)
@@ -25,7 +17,10 @@ const RestaurantList = (props) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={{ marginBottom: SIZES.padding * 2 }}
-            onPress={() => setCart([...cart, item])}
+            onPress={() => navigation.navigate("Restaurant", {
+                item,
+                currentLocation
+            })}
         >
             {/* Image */}
             <View style={{ marginBottom: SIZES.padding}}>
@@ -72,7 +67,7 @@ const RestaurantList = (props) => {
 
     return (
         <FlatList
-            data={restaurants}
+            data={products}
             keyExtractor={item => `${item.id}`}
             renderItem={renderItem}
             contentContainerStyle={{
@@ -83,4 +78,4 @@ const RestaurantList = (props) => {
     )
 }
 
-export default RestaurantList;
+export default ProductsList;
