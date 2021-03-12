@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 const url = (module) => {
     let endpoint = ''
     if (module === 'restaurants') endpoint = 'http://localhost:3001/restaurants'
+    if (module === 'products') endpoint = 'http://localhost:3001/products'
     // add other endpoints
     return endpoint
 }

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import { initialCurrentLocation, categoryData } from '../../assets/data';
+import { initialCurrentLocation, categoryData, productsCategories } from '../../assets/data';
 import { Header } from '../../components';
 import { icons } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
@@ -9,8 +9,9 @@ import { styles } from './HomeStyles';
 
 const Home = ({ navigation }) => {
 
-    const restaurantData = fetchData('restaurants');
-    const [categories, setCategories] = useState(categoryData);
+    const restaurantData = fetchData('products');
+    console.log(restaurantData)
+    const [categories, setCategories] = useState(productsCategories);
     const [selectedCategory, setSelectedCategory] = useState()
     const [restaurants, setRestaurants] = useState()
     const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
@@ -20,10 +21,12 @@ const Home = ({ navigation }) => {
     }, [restaurantData])
 
     const onSelectCategory = (category) => {
-        let restaurantList = restaurantData.filter(a => a.categories.includes(category.id))
+        let restaurantList = restaurantData.filter(a => a.category.includes(category.id))
         setRestaurants(restaurantList)
         setSelectedCategory(category)
     }
+
+    console.log(selectedCategory)
 
     return (
         <SafeAreaView style={styles.container}>

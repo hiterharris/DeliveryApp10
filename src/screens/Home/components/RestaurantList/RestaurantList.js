@@ -1,7 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { icons, SIZES, COLORS, FONTS } from '../../../../constants';
-import { images } from '../../../../constants';
 import { styles } from './RestaurantListStyles';
 
 const RestaurantList = (props) => {
@@ -26,7 +25,7 @@ const RestaurantList = (props) => {
             {/* Image */}
             <View style={{ marginBottom: SIZES.padding}}>
                 <Image
-                    source={images.burger_restaurant_1}
+                    source={{ uri: item.photo }}
                     resizeMode="cover"
                     style={styles.itemImage}
                 />
@@ -48,7 +47,7 @@ const RestaurantList = (props) => {
 
                 {/* Categories */}
                 <View style={{ flexDirection: 'row', marginLeft: 10 }}>
-                    {item.categories.map((categoryId) => {
+                    {item.category.map((categoryId) => {
                         return (
                             <View style={{ flexDirection: 'row' }} key={categoryId}>
                                 <Text>{getCategoryNameById(categoryId)}</Text>

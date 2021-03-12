@@ -31,14 +31,14 @@ const MainCategories = (props) => {
                         backgroundColor: (selectedCategory?.id == item.id) ? COLORS.white : COLORS.lightGray
                     }}
                 >
-                    <Image
-                        source={item.icon}
-                        resizeMode="contain"
-                        style={{
-                            width: 30,
-                            height: 30
-                        }}
-                    />
+                <Image
+                    source={{ uri: item.icon }}
+                    resizeMode="contain"
+                    style={{
+                        width: 50,
+                        height: 50
+                    }}
+                />
                 </View>
 
                 <Text
@@ -69,6 +69,9 @@ const MainCategories = (props) => {
 }
 
 const styles = StyleSheet.create({
+    container: {
+        alignItems: 'center'
+    },
     shadow: {
         shadowColor: "#000",
         shadowOffset: {
