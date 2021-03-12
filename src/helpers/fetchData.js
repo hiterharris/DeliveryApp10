@@ -4,8 +4,7 @@ const url = (module) => {
     let endpoint = ''
     if (module === 'restaurants') endpoint = 'http://localhost:3001/restaurants'
     if (module === 'products') endpoint = 'http://localhost:3001/products'
-    // add other endpoints
-    return endpoint
+    return endpoint;
 }
 
 export const fetchData = (module) => {
