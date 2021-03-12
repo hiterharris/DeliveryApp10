@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import {
   StyleSheet,
   SafeAreaView,
+  View,
   Text
 } from 'react-native';
 import { Header } from '../../components';
@@ -17,10 +18,10 @@ const Products = ({ route, navigation }) => {
         dispatch(cartActions.addItem(cart))
     }, [cart])
 
-    // onPress={() => setCart([...cart, item])}s
+    // onPress={() => setCart([...cart, item])}
 
     const { item, currentLocation } = route.params;
-
+    console.log(item)
     return (
         <SafeAreaView style={styles.container}>
             <Header
@@ -30,6 +31,14 @@ const Products = ({ route, navigation }) => {
                 iconLeft={icons.back}
                 iconRight={icons.basket}
             />
+            {item?.products?.map((item, index) => {
+                return (
+                    <View key={index}>
+                        <Text>{item.brandName}</Text>
+                    </View>
+                )
+            })}
+
         </SafeAreaView>
         );
     };

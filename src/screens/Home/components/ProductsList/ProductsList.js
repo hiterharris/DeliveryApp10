@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
 import { icons, SIZES, COLORS, FONTS } from '../../../../constants';
-import { styles } from './RestaurantListStyles';
+import { styles } from './ProductstListStyles';
 
 const ProductsList = (props) => {
     const { currentLocation, products, categories, navigation } = props;
@@ -17,7 +17,7 @@ const ProductsList = (props) => {
     const renderItem = ({ item }) => (
         <TouchableOpacity
             style={{ marginBottom: SIZES.padding * 2 }}
-            onPress={() => navigation.navigate("Restaurant", {
+            onPress={() => navigation.navigate("Products", {
                 item,
                 currentLocation
             })}
