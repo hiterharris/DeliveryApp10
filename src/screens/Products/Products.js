@@ -3,7 +3,8 @@ import {
   StyleSheet,
   SafeAreaView,
   View,
-  Text
+  Text,
+  Image
 } from 'react-native';
 import { Header } from '../../components';
 import { COLORS, icons } from '../../constants';
@@ -25,7 +26,7 @@ const Products = ({ route, navigation }) => {
     return (
         <SafeAreaView style={styles.container}>
             <Header
-                title={currentLocation.streetName}
+                title={item.name}
                 clickHandlerLeft={() => navigation.goBack()}
                 clickHandlerRight={() => navigation.navigate("Cart", {cart: []})}
                 iconLeft={icons.back}
@@ -35,6 +36,7 @@ const Products = ({ route, navigation }) => {
                 return (
                     <View key={index}>
                         <Text>{item.brandName}</Text>
+                        <Image source={{uri: item.brandPhoto}} style={{ height: 200, width: 200 }} />
                     </View>
                 )
             })}
