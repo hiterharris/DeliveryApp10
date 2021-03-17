@@ -4,6 +4,7 @@ const url = (module) => {
     let endpoint = ''
     if (module === 'restaurants') endpoint = 'http://localhost:3001/restaurants'
     if (module === 'products') endpoint = 'http://localhost:3001/products'
+    if (module === 'products/new') endpoint = 'http://localhost:3001/products/new'
     return endpoint;
 }
 

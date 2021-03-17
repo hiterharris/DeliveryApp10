@@ -47,14 +47,14 @@ const ProductsList = (props) => {
 
                 {/* Categories */}
                 <View style={{ flexDirection: 'row', marginLeft: 10 }}>
-                    {item.category.map((categoryId) => {
+                    {/* {item.category.map((categoryId) => {
                         return (
                             <View style={{ flexDirection: 'row' }} key={categoryId}>
                                 <Text>{getCategoryNameById(categoryId)}</Text>
                                 <Text style={{ color: COLORS.darkgray }}> . </Text>
                             </View>
                         )
-                    })}
+                    })} */}
 
                     {/* Price */}
                     {[1, 2, 3].map((priceRating) => (
