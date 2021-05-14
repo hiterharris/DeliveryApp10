@@ -2,9 +2,21 @@ import { StyleSheet } from 'react-native';
 import { SIZES, COLORS } from '../../../../constants';
 
 export const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: COLORS.lightGray4
+    productCard: {
+        width: '45%',
+        margin: '2.5%',
+        shadowColor: "#000",
+        shadowOffset: {
+            width: 0,
+            height: 3,
+        },
+        shadowOpacity: 0.1,
+        shadowRadius: 3,
+        elevation: 1,
+    },
+    productCardImage: {
+        marginBottom: SIZES.padding,
+        backgroundColor: 'white'
     },
     shadow: {
         shadowColor: "#000",
@@ -18,28 +30,37 @@ export const styles = StyleSheet.create({
     },
     itemImage: {
         width: "100%",
-        height: 200,
+        height: 150,
         borderRadius: SIZES.radius
     },
-    itemDuration: {
-        position: 'absolute',
-        bottom: 0,
-        right: 0,
-        height: 50,
-        width: SIZES.width * 0.3,
-        backgroundColor: COLORS.white,
-        borderTopLeftRadius: SIZES.radius,
-        backgroundColor: COLORS.secondary,
+    addButton: {
+        height: 30,
+        margin: 10,
+        borderRadius: 5,
+        backgroundColor: COLORS.primary,
         alignItems: 'center',
         justifyContent: 'center',
         shadowColor: "#000",
         shadowOffset: {
-            width: 0,
-            height: 3,
+            width: 4,
+            height: 4,
         },
         shadowOpacity: 0.1,
         shadowRadius: 3,
         elevation: 1,
+    },
+    addButtonText: {
+        fontSize: 20,
+        color: 'white',
+        fontWeight: 'bold',
+    },
+    price: {
+        fontSize: 16,
+        textAlign: 'center'
+    },
+    name: {
+        fontSize: 16,
+        textAlign: 'center'
     },
     rating: {
         height: 20,

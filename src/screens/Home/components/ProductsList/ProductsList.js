@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
-import { SIZES, COLORS } from '../../../../constants';
+import { SIZES  } from '../../../../constants';
 import { styles } from './ProductstListStyles';
 
 const ProductsList = (props) => {
@@ -8,29 +8,24 @@ const ProductsList = (props) => {
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
-            style={{ marginBottom: SIZES.padding * 2 }}
+            style={styles.productCard}
             onPress={() => navigation.navigate("Products", {
                 item,
                 currentLocation
             })}
         >
-            <View style={{ marginBottom: SIZES.padding}}>
+            <View style={styles.productCardImage}>
                 <Image
                     source={{ uri: item.photo }}
-                    resizeMode="cover"
+                    resizeMode="contain"
                     style={styles.itemImage}
                 />
-                <View style={styles.itemDuration}>
-                    <Text style={{ fontSize: 20 }}>Add Item</Text>
-                </View>
             </View>
-            <Text style={{ fontSize: 20 }}>{item.name}</Text>
-            <View style={{ marginTop: SIZES.padding, flexDirection: 'row' }}>
-                <View style={{ flexDirection: 'row' }}>
-                    <Text style={{ fontSize: 18 }}>${item.price}</Text>
-                    <Text style={{ color: COLORS.darkgray, paddingLeft: 10, fontSize: 18 }}>Category</Text>
-                </View>
-            </View>
+            <Text style={styles.price}>${item.price}</Text>
+            <Text style={styles.name}>{item.name.slice(0,20)}</Text>
+            <TouchableOpacity style={styles.addButton}>
+                <Text style={styles.addButtonText}>Add Item</Text>
+            </TouchableOpacity>
         </TouchableOpacity>
     )
 
@@ -39,9 +34,10 @@ const ProductsList = (props) => {
             data={products}
             keyExtractor={item => `${item.id}`}
             renderItem={renderItem}
+            numColumns={2}
             contentContainerStyle={{
                 paddingHorizontal: SIZES.padding * 2,
-                paddingBottom: 30
+                paddingBottom: 30,
             }}
         />
     )
