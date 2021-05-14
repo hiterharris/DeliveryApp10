@@ -1,18 +1,10 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { View, Text, TouchableOpacity, Image, FlatList } from 'react-native';
-import { icons, SIZES, COLORS, FONTS } from '../../../../constants';
+import { SIZES, COLORS } from '../../../../constants';
 import { styles } from './ProductstListStyles';
 
 const ProductsList = (props) => {
-    const { currentLocation, products, categories, navigation } = props;
-
-    function getCategoryNameById(id) {
-        let category = categories.filter(a => a.id == id)
-
-        if (category.length > 0)
-            return category[0].name
-        return ""
-    }
+    const { currentLocation, products, navigation } = props;
 
     const renderItem = ({ item }) => (
         <TouchableOpacity
@@ -22,7 +14,6 @@ const ProductsList = (props) => {
                 currentLocation
             })}
         >
-            {/* Image */}
             <View style={{ marginBottom: SIZES.padding}}>
                 <Image
                     source={{ uri: item.photo }}
@@ -30,36 +21,14 @@ const ProductsList = (props) => {
                     style={styles.itemImage}
                 />
                 <View style={styles.itemDuration}>
-                    <Text>{item.duration}</Text>
+                    <Text style={{ fontSize: 20 }}>Add Item</Text>
                 </View>
             </View>
-
-            {/* Restaurant Info */}
             <Text style={{ fontSize: 20 }}>{item.name}</Text>
-
             <View style={{ marginTop: SIZES.padding, flexDirection: 'row' }}>
-                {/* Rating */}
-                <Image
-                    source={icons.star}
-                    style={styles.rating}
-                />
-                <Text>{item.rating}</Text>
-
-                {/* Categories */}
-                <View style={{ flexDirection: 'row', marginLeft: 10 }}>
-                    {/* {item.category.map((categoryId) => {
-                        return (
-                            <View style={{ flexDirection: 'row' }} key={categoryId}>
-                                <Text>{getCategoryNameById(categoryId)}</Text>
-                                <Text style={{ color: COLORS.darkgray }}> . </Text>
-                            </View>
-                        )
-                    })} */}
-
-                    {/* Price */}
-                    {[1, 2, 3].map((priceRating) => (
-                        <Text key={priceRating} style={{ color: (priceRating <= item.priceRating) ? COLORS.black : COLORS.darkgray }}>$</Text>
-                    ))}
+                <View style={{ flexDirection: 'row' }}>
+                    <Text style={{ fontSize: 18 }}>${item.price}</Text>
+                    <Text style={{ color: COLORS.darkgray, paddingLeft: 10, fontSize: 18 }}>Category</Text>
                 </View>
             </View>
         </TouchableOpacity>

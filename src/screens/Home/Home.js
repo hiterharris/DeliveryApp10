@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { SafeAreaView } from 'react-native';
-import { initialCurrentLocation, productsCategories } from '../../assets/data';
+import { initialCurrentLocation } from '../../assets/data';
 import { Header } from '../../components';
 import { icons } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
@@ -8,25 +8,31 @@ import { MainCategories, ProductsList } from './components';
 import { styles } from './HomeStyles';
 
 const Home = ({ navigation }) => {
-
+    const allProducts = fetchData('products/all');
     const productsData = fetchData('products');
-    const newProductsData = fetchData('products/new');
-    const [categories, setCategories] = useState(productsCategories);
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [products, setProducts] = useState();
     const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
 
     useEffect(() => {
-        setProducts(newProductsData)
-    }, [newProductsData])
+        setProducts(allProducts)
+    }, [allProducts])
 
     const onSelectCategory = (category) => {
         if (category.id == 1) {
-            setProducts(newProductsData[0].products)
+            setProducts(productsData[0].products)
             setSelectedCategory(category)
-        } else {
-            let productsList = newProductsData.filter(a => a.category.includes(category.id))
-            setProducts(productsList)
+        } else if (category.id == 2) {
+            setProducts(productsData[1].products)
+            setSelectedCategory(category)
+        } else if (category.id == 3) {
+            setProducts(productsData[2].products)
+            setSelectedCategory(category)
+        } else if (category.id == 4) {
+            setProducts(productsData[3].products)
+            setSelectedCategory(category)
+        } else if (category.id == 5) {
+            setProducts(productsData[4].products)
             setSelectedCategory(category)
         }
     }
@@ -41,14 +47,13 @@ const Home = ({ navigation }) => {
                 iconRight={icons.basket}
             />
             <MainCategories
-                categories={newProductsData}
+                categories={productsData}
                 selectedCategory={selectedCategory}
                 onSelectCategory={onSelectCategory}
             />
             <ProductsList
                 currentLocation={currentLocation}
                 products={products}
-                categories={newProductsData}
                 navigation={navigation}
             />
         </SafeAreaView>
