@@ -13,8 +13,6 @@ import { ScrollView } from 'react-native-gesture-handler';
 
 const Product = ({ route, navigation }) => {
     const { item } = route.params;
-    console.log(item)
-
 
     return (
         <SafeAreaView>
