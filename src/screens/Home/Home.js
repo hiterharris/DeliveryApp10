@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { SafeAreaView } from 'react-native';
+import { SafeAreaView, Button } from 'react-native';
 import { initialCurrentLocation } from '../../assets/data';
 import { Header } from '../../components';
 import { icons } from '../../constants';
@@ -46,6 +46,7 @@ const Home = ({ navigation }) => {
                 iconLeft={icons.nearby}
                 iconRight={icons.basket}
             />
+            <Button onPress={() => navigation.navigate("Login")} title='Login Screen' />
             <MainCategories
                 categories={productsData}
                 selectedCategory={selectedCategory}

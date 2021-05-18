@@ -8,14 +8,13 @@ const Stack = createStackNavigator();
 const App = () => {
   return (
       <NavigationContainer>
-        <Stack.Navigator screenOptions={{ headerShown: false }} initialRoute={'Home'}>
-          <Stack.Screen name='Home' component={Home}/>
+        <Stack.Navigator screenOptions={{ headerShown: false }} initialRoute={'Login'}>
           <Stack.Screen name='Login' component={Login}/>
+          <Stack.Screen name='Home' component={Home}/>
           <Stack.Screen name='Product' component={Product}/>
           <Stack.Screen name='Cart' component={Cart}/>
         </Stack.Navigator>
       </NavigationContainer>
-
   );
 };
 
