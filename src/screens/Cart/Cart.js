@@ -3,19 +3,15 @@ import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-na
 import { SIZES, COLORS, icons } from '../../constants';
 import { Header } from '../../components';
 import { useSelector } from 'react-redux';
+import { useCart } from '../../store/state'
 
 const Cart = ({ navigation }) => {
-    const data = useSelector(state => state.cartReducer.cart)
-    const [cartItems, setCartItems] = useState()
-
-    useEffect(() => {
-        setCartItems(data);
-    }, [data]);
+    const [cart, setCart] = useCart()
 
     return (
         <SafeAreaView style={styles.container}>
             <Header title={'Cart'} clickHandlerLeft={() => navigation.goBack()} iconLeft={icons.back} />
-            {cartItems?.map((item, index) => {
+            {cart?.map((item, index) => {
                 return (
                     <View key={index}>
                         <Text>{item.name}</Text>

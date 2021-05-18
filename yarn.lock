@@ -3336,6 +3336,11 @@
   "resolved" "https://registry.npmjs.org/functional-red-black-tree/-/functional-red-black-tree-1.0.1.tgz"
   "version" "1.0.1"
 
+"galactic-state@^2.0.1":
+  "integrity" "sha512-2LXxa9xD9rn+MHA5fpS16W6d3sJX3nOdXZhVHQLh1ah3AEum7PvoWSK5lRZN8ErVeBXXcxieCBk3FSPL/rU5vA=="
+  "resolved" "https://registry.npmjs.org/galactic-state/-/galactic-state-2.0.1.tgz"
+  "version" "2.0.1"
+
 "gensync@^1.0.0-beta.2":
   "integrity" "sha512-3hN7NaskYvMDLQY55gnW3NQ+mesEAepTqlg+VEbj7zzqEMBVNhzcGYYeqFo/TlYz6eQiFcp1HcsCZO+nGgS8zg=="
   "resolved" "https://registry.npmjs.org/gensync/-/gensync-1.0.0-beta.2.tgz"
@@ -5926,7 +5931,7 @@
     "react-is" "^16.8.6"
     "scheduler" "^0.19.1"
 
-"react@16.13.1":
+"react@^16.8.0 || 17.0.0", "react@16.13.1":
   "integrity" "sha512-YMZQQq32xHLX0bz5Mnibv1/LHb3Sqzngu7xstSM+vrkE5Kzr9xE0yMByK5kMoTK30YVJE61WfbxIFFvfeDKT1w=="
   "resolved" "https://registry.npmjs.org/react/-/react-16.13.1.tgz"
   "version" "16.13.1"

@@ -4,7 +4,7 @@ import {
   SafeAreaView,
   View,
   Text,
-  Image
+  Image,
 } from 'react-native';
 import { Header } from '../../components';
 import { icons } from '../../constants';
@@ -14,6 +14,7 @@ import { ScrollView } from 'react-native-gesture-handler';
 const Product = ({ route, navigation }) => {
     const { item } = route.params;
     console.log(item)
+
 
     return (
         <SafeAreaView>
