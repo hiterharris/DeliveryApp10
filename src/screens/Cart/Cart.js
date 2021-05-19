@@ -1,8 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { SafeAreaView, View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { SIZES, COLORS, icons } from '../../constants';
 import { Header } from '../../components';
-import { useSelector } from 'react-redux';
 import { useCart } from '../../store/state'
 
 const Cart = ({ navigation }) => {
@@ -26,14 +25,8 @@ const Cart = ({ navigation }) => {
                 }}
             >
                 <TouchableOpacity
-                    style={{
-                        width: SIZES.width * 0.9,
-                        padding: SIZES.padding,
-                        backgroundColor: COLORS.primary,
-                        alignItems: 'center',
-                        borderRadius: SIZES.radius,
-                    }}
-                    onPress={() => navigation.navigate("OrderDelivery")}
+                    style={styles.orderButton}
+                    // onPress={() => navigation.navigate("OrderDelivery")}
                 >
                     <Text style={{ color: COLORS.white, fontSize: 22 }}>Order</Text>
                 </TouchableOpacity>
@@ -46,6 +39,13 @@ const styles = StyleSheet.create({
     container: {
         flex: 1
     },
+    orderButton: {
+        width: SIZES.width * 0.9,
+        padding: SIZES.padding,
+        backgroundColor: COLORS.primary,
+        alignItems: 'center',
+        borderRadius: SIZES.radius,
+    }
 })
 
 export default Cart;
