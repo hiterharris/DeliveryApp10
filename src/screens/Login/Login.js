@@ -7,21 +7,26 @@ import {
 import { styles } from './LoginStyles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 import { useToken } from '../../store/state';
+import axios from 'axios';
 
 const Login = ({ navigation }) => {
   const [token, setToken] = useToken()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-
-  const submitButton = () => {
-    const user = { email: email, password: password }
-    // setToken('token')
-    console.log(user)
-  } 
+  const [user, setUser] = useState({})
 
   useEffect(() => {
-    if (token) navigation.navigate("Home")
-  }, [token])
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+    fetch('http://localhost:3001/auth/login', requestOptions)
+        .then(response => response.json())
+        .then(data => setToken(data.token))
+        .then(navigation.navigate("Home"))
+        .catch(error => console.log(error))
+  }, [user]);
 
   return (
     <View style={styles.container}>
@@ -42,7 +47,7 @@ const Login = ({ navigation }) => {
           onChangeText={(password) => setPassword(password)}
         />
       </View>
-      <TouchableOpacity style={styles.submitButton} onPress={() => submitButton()}>
+      <TouchableOpacity style={styles.submitButton} onPress={() => setUser({ username: email, password: password })}>
         <Text style={styles.submitButtonText}>Submit</Text>
       </TouchableOpacity>
       

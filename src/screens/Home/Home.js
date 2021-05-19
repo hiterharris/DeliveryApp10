@@ -39,10 +39,11 @@ const Home = ({ navigation }) => {
         }
     }
 
-    const logOut = () => {
+    const logout = () => {
+        fetch('http://localhost:3001/auth/logout')
         setToken()
         navigation.navigate("Login")
-    }
+      }
 
     return (
         <SafeAreaView style={styles.container}>
@@ -53,7 +54,7 @@ const Home = ({ navigation }) => {
                 iconLeft={icons.nearby}
                 iconRight={icons.basket}
             />
-            <Button onPress={() => logOut()} title='Logout' />
+            <Button onPress={() => logout()} title='Logout' />
             <MainCategories
                 categories={productsData}
                 selectedCategory={selectedCategory}
