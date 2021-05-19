@@ -6,7 +6,7 @@ import {
 } from 'react-native';
 import { styles } from './LoginStyles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
-import { useToken } from '../../store/state'
+import { useToken } from '../../store/state';
 
 const Login = ({ navigation }) => {
   const [token, setToken] = useToken()
@@ -15,7 +15,7 @@ const Login = ({ navigation }) => {
 
   const submitButton = () => {
     const user = { email: email, password: password }
-    setToken('token')
+    // setToken('token')
     console.log(user)
   } 
 
