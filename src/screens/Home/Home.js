@@ -46,7 +46,7 @@ const Home = ({ navigation }) => {
                 iconLeft={icons.nearby}
                 iconRight={icons.basket}
             />
-            <Button onPress={() => navigation.navigate("Login")} title='Login Screen' />
+            <Button onPress={() => navigation.navigate("Login")} title='Logout' />
             <MainCategories
                 categories={productsData}
                 selectedCategory={selectedCategory}

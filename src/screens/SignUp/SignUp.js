@@ -4,10 +4,10 @@ import {
   Text,
   TextInput,
 } from 'react-native';
-import { styles } from './LoginStyles';
+import { styles } from './SignUpStyles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
 
-const Login = ({ navigation }) => {
+const SignUp = ({ navigation }) => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
   const user =     { email: email, password: password }
@@ -19,7 +19,7 @@ const Login = ({ navigation }) => {
 
   return (
     <View style={styles.container}>
-      <Text style={styles.title}>Login</Text>
+      <Text style={styles.title}>Sign Up</Text>
       <View style={styles.inputView}>
         <TextInput
           style={styles.TextInput}
@@ -40,11 +40,11 @@ const Login = ({ navigation }) => {
         <Text style={styles.submitButtonText}>Submit</Text>
       </TouchableOpacity>
       
-      <TouchableOpacity onPress={() => navigation.navigate("SignUp")}>
-        <Text style={styles.signUpText}>Sign Up</Text>
+      <TouchableOpacity onPress={() => navigation.navigate("Login")}>
+        <Text style={styles.signUpText}>Sign In</Text>
       </TouchableOpacity>
     </View>
   );
 };
 
-export default Login;
+export default SignUp;
