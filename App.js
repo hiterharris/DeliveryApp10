@@ -6,6 +6,7 @@ import { Home, Login, Product, Cart, SignUp } from './src/screens';
 const Stack = createStackNavigator();
 
 const App = () => {
+
   return (
       <NavigationContainer>
         <Stack.Navigator screenOptions={{ headerShown: false }} initialRoute={'Login'}>

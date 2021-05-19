@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   View,
   Text,
@@ -6,16 +6,22 @@ import {
 } from 'react-native';
 import { styles } from './LoginStyles';
 import { TouchableOpacity } from 'react-native-gesture-handler';
+import { useToken } from '../../store/state'
 
 const Login = ({ navigation }) => {
+  const [token, setToken] = useToken()
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
-  const user =     { email: email, password: password }
 
   const submitButton = () => {
+    const user = { email: email, password: password }
+    setToken('token')
     console.log(user)
-    navigation.navigate("Home")
-  }
+  } 
+
+  useEffect(() => {
+    if (token) navigation.navigate("Home")
+  }, [token])
 
   return (
     <View style={styles.container}>

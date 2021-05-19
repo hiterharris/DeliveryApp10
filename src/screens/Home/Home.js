@@ -6,6 +6,7 @@ import { icons } from '../../constants';
 import { fetchData } from '../../helpers/fetchData';
 import { MainCategories, ProductsList } from './components';
 import { styles } from './HomeStyles';
+import { useToken } from '../../store/state'
 
 const Home = ({ navigation }) => {
     const allProducts = fetchData('products/all');
@@ -13,6 +14,7 @@ const Home = ({ navigation }) => {
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [products, setProducts] = useState();
     const [currentLocation, setCurrentLocation] = useState(initialCurrentLocation);
+    const [token, setToken] = useToken()
 
     useEffect(() => {
         setProducts(allProducts)
@@ -37,6 +39,11 @@ const Home = ({ navigation }) => {
         }
     }
 
+    const logOut = () => {
+        setToken()
+        navigation.navigate("Login")
+    }
+
     return (
         <SafeAreaView style={styles.container}>
             <Header
@@ -46,7 +53,7 @@ const Home = ({ navigation }) => {
                 iconLeft={icons.nearby}
                 iconRight={icons.basket}
             />
-            <Button onPress={() => navigation.navigate("Login")} title='Logout' />
+            <Button onPress={() => logOut()} title='Logout' />
             <MainCategories
                 categories={productsData}
                 selectedCategory={selectedCategory}
